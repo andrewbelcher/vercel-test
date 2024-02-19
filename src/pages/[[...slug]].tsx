@@ -6,7 +6,7 @@ import {
 } from 'next'
 
 
-import {PropsWithChildren} from "react";
+import {PropsWithChildren, useEffect} from "react";
 import Link from "next/link";
 
 interface PageProps extends PropsWithChildren {
@@ -15,12 +15,18 @@ interface PageProps extends PropsWithChildren {
 }
 
 export default function Page({ slug, time }: PageProps) {
+    const now = (new Date()).getTime() / 1000
+    const generated = (new Date()).getTime() / 1000
+    const age = now - generated
+    const expected = generated + 120 - now
+
     return (
         <main className="flex h-screen">
             <div className="m-auto">
                 <p className="text-2xl">Slug: {slug}</p>
                 <p className="text-xl">Built at: {time}</p>
-                <p className="text-l" suppressHydrationWarning>Age at hydration: {(new Date()).getUTCSeconds() - (new Date(time)).getUTCSeconds()} seconds</p>
+                <p className="text-l" suppressHydrationWarning>Age at hydration: {age} seconds</p>
+                <p className="text-l" suppressHydrationWarning>Next expected hydration: {expected} seconds</p>
                 <ul className="flex flex-row gap-x-4 py-4">
                     <li><Link href="/" className="text-sky-400 underline">Front</Link></li>
                     <li><Link href="/test-1" className="text-sky-400 underline">Test 1</Link></li>
@@ -47,12 +53,12 @@ export const getStaticProps: GetStaticProps = async (
         ? context.params.slug.map((s) => encodeURIComponent(s)).join("/")
         : context.params?.slug ?? '<front>'
 
-    console.log(`Generating ${slug}`)
+    await fetch('https://ifconfig.me')
 
     return {
         props: {
             slug: slug,
-            time: (new Date()).toISOString()
+            time: (new Date()).toISOString(),
         },
         revalidate: 120
     }
