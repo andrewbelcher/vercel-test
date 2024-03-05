@@ -16,9 +16,10 @@ interface PageProps extends PropsWithChildren {
 
 export default function Page({ slug, time }: PageProps) {
     const now = (new Date()).getTime() / 1000
-    const generated = (new Date()).getTime() / 1000
-    const age = now - generated
-    const expected = generated + 120 - now
+    const generated = (new Date(time)).getTime() / 1000
+
+    const age = Math.round(now - generated)
+    const expected = Math.round(generated + 120 - now)
 
     return (
         <main className="flex h-screen">
@@ -54,6 +55,7 @@ export const getStaticProps: GetStaticProps = async (
         : context.params?.slug ?? '<front>'
 
     await fetch('https://ifconfig.me')
+    // await fetch('https://devcms.themacallan.com/en/jsonapi/node/page/3f94dfa9-87cb-4ee9-8a30-1f0729e42c2c?resourceVersion=rel%3Alatest-version')
 
     return {
         props: {
