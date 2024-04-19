@@ -70,6 +70,6 @@ export const getStaticProps: GetStaticProps = async (
             slug: slug,
             time: (new Date()).toISOString(),
         },
-        revalidate: 120
+        revalidate: 300
     }
 }
