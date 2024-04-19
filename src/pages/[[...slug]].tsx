@@ -59,7 +59,8 @@ export const getStaticProps: GetStaticProps = async (
         'https://devcms.themacallan.com/en/jsonapi/node/page/3f94dfa9-87cb-4ee9-8a30-1f0729e42c2c?resourceVersion=rel%3Alatest-version',
         {
             headers: {
-                'x-vercel-frontend': process.env.DRUPAL_CF_HEADER
+                'x-vercel-frontend': process.env.DRUPAL_CF_HEADER,
+                'x-requested-with': 'vercel-test'
             }
         }
     )
