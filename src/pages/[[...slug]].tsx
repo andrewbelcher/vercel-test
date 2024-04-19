@@ -19,7 +19,7 @@ export default function Page({ slug, time }: PageProps) {
     const generated = (new Date(time)).getTime() / 1000
 
     const age = Math.round(now - generated)
-    const expected = Math.round(generated + 120 - now)
+    const expected = Math.round(generated + 300 - now)
 
     return (
         <main className="flex h-screen">
@@ -27,7 +27,7 @@ export default function Page({ slug, time }: PageProps) {
                 <p className="text-2xl">Slug: {slug}</p>
                 <p className="text-xl">Built at: {time}</p>
                 <p className="text-l" suppressHydrationWarning>Age at hydration: {age} seconds</p>
-                <p className="text-l" suppressHydrationWarning>Next expected hydration: {expected} seconds</p>
+                <p className="text-l" suppressHydrationWarning>Next expected revalidation: {expected} seconds</p>
                 <ul className="flex flex-row gap-x-4 py-4">
                     <li><Link href="/" className="text-sky-400 underline">Front</Link></li>
                     <li><Link href="/test-1" className="text-sky-400 underline">Test 1</Link></li>

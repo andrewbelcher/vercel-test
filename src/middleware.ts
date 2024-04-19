@@ -26,7 +26,7 @@ export default async function middleware(req: NextRequest) {
     req.nextUrl.pathname.includes('/api/') ||
     PUBLIC_FILE.test(req.nextUrl.pathname)
   ) {
-    return null
+    return NextResponse.next()
   }
 
   if (req.nextUrl.locale === 'default') {
