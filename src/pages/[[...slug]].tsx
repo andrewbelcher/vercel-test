@@ -29,10 +29,10 @@ export default function Page({ slug, time }: PageProps) {
                 <p className="text-l" suppressHydrationWarning>Age at hydration: {age} seconds</p>
                 <p className="text-l" suppressHydrationWarning>Next expected revalidation: {expected} seconds</p>
                 <ul className="flex flex-row gap-x-4 py-4">
-                    <li><a href="/" className="text-sky-400 underline">Front</a></li>
-                    <li><a href="/test-1" className="text-sky-400 underline">Test 1</a></li>
-                    <li><a href="/test-2" className="text-sky-400 underline">Test 2</a></li>
-                    <li><a href="/test-3" className="text-sky-400 underline">Test 3</a></li>
+                    <li><Link href="/" className="text-sky-400 underline">Front</Link></li>
+                    <li><Link href="/test-1" className="text-sky-400 underline">Test 1</Link></li>
+                    <li><Link href="/test-2" className="text-sky-400 underline">Test 2</Link></li>
+                    <li><Link href="/test-3" className="text-sky-400 underline">Test 3</Link></li>
                 </ul>
             </div>
         </main>
