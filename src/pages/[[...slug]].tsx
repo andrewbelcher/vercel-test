@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps = async (
 
     // await fetch('https://ifconfig.me')
     await fetch(
-        'https://devcms.themacallan.com/en/jsonapi/node/page/3f94dfa9-87cb-4ee9-8a30-1f0729e42c2c?resourceVersion=rel%3Alatest-version&vercel-test=1',
+        'https://devcms.themacallan.com/en/jsonapi/node/page/3f94dfa9-87cb-4ee9-8a30-1f0729e42c2c?resourceVersion=rel%3Alatest-version&vercel-test=' + slug,
         {
             headers: {
                 'x-vercel-frontend': process.env.DRUPAL_CF_HEADER,
